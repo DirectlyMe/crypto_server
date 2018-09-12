@@ -15,4 +15,5 @@ app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
 
 const getCurrencies = require('./src/api_calls/pull_currencies');
 
-getCurrencies.getBtcStats();
+// getCurrencies.getBtcStats();
+// getCurrencies.getLtcStats();
