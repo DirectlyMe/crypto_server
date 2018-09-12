@@ -1,0 +1,42 @@
+{
+  "name": "crypto_server",
+  "version": "1.0.0",
+  "description": "pull crypto data and processes it",
+  "main": "app.js",
+  "scripts": {
+    "start": "DEBUG=app,app:* nodemon app.js"
+  },
+  "author": "Jack Hansen",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0",
+    "mongodb": "^2.2.36",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.4",
+    "passport": "^0.4.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
+    "delay": "10000",
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": 8080
+    }
+  }
+}
