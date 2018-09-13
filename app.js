@@ -12,8 +12,3 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => res.send('Crypto API'));
 app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
-
-const getCurrencies = require('./src/api_calls/pull_currencies');
-
-// getCurrencies.getBtcStats();
-// getCurrencies.getLtcStats();

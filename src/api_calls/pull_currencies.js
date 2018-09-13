@@ -8,6 +8,9 @@ const mongoConfig = require('../config/mongo_config');
 class GetCryptoStats {
   constructor() {
     this.getBtcStats.bind();
+    this.getEthStats.bind();
+    this.getLtcStats.bind();
+    this.getXrpStats.bind();
   }
 
   getBtcStats() {
