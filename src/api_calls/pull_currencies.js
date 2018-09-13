@@ -14,6 +14,7 @@ class GetCryptoStats {
   }
 
   getBtcStats() {
+    console.log('in btc stats');
     this.requestOptions = {
       method: 'GET',
       uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest',
@@ -53,6 +54,7 @@ class GetCryptoStats {
   }
 
   getLtcStats() {
+    console.log('in ltc stast');
     this.requestOptions = {
       method: 'GET',
       uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest',
