@@ -5,7 +5,6 @@ async function getAllStats() {
   await GetCurrencies.getEthStats();
   await GetCurrencies.getLtcStats();
   await GetCurrencies.getXrpStats();
-  console.log('function ended');
   process.exit();
 }
 
