@@ -1,11 +1,12 @@
-const GetCurrencies = require('./pull_currencies');
+const PullCurrencies = require('./pull_currencies');
 
-async function getAllStats() {
-  await GetCurrencies.getBtcStats();
-  await GetCurrencies.getEthStats();
-  await GetCurrencies.getLtcStats();
-  await GetCurrencies.getXrpStats();
-  process.exit();
+function getAllStats() {
+  const GetCurrencies = new PullCurrencies();
+
+  GetCurrencies.getCurrencyStats('BTC');
+  GetCurrencies.getCurrencyStats('LTC');
+  GetCurrencies.getCurrencyStats('ETH');
+  GetCurrencies.getCurrencyStats('XRP');
 }
 
-getAllStats();
+module.exports = getAllStats;

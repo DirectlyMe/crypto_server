@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
+    "cron": "^1.4.1",
     "debug": "^3.1.0",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
@@ -33,7 +34,7 @@
     "ignore": [
       "node_modules/**/node_modules"
     ],
-    "delay": "10000",
+    "delay": "5000",
     "env": {
       "NODE_ENV": "development",
       "PORT": 8080
