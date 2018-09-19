@@ -7,7 +7,7 @@ const fs = require('fs');
 const Cron = require('cron').CronJob;
 
 fs.appendFile('./logs/main_server_log.txt', `\n${new Date()}: server started`, (err) => {
-  if (err) debug(err);
+  if (err) debug(chalk.red(err));
 });
 
 const app = express();
@@ -28,3 +28,5 @@ const getStatsJob = new Cron('1 1 1 * * *', () => {
 }, null, true, 'America/Denver');
 
 getStatsJob.start();
+
+getStats();

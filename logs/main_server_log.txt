@@ -1,2 +1,7 @@
 
-Sat Sep 15 2018 00:26:58 GMT-0600 (Mountain Daylight Time): server started
+Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time): server started
+[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
+[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
+[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
+[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
+[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted

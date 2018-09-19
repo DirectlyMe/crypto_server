@@ -1,5 +1,6 @@
 const rp = require('request-promise');
 const debug = require('debug')('app:pull_currencies');
+const chalk = require('chalk');
 const { MongoClient } = require('mongodb');
 const fs = require('fs');
 
@@ -19,7 +20,7 @@ class GetCryptoStats {
       method: 'GET',
       uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest',
       qs: {
-        currencySymbol,
+        symbol: currencySymbol,
         convert: 'USD',
       },
       headers: {
@@ -31,6 +32,7 @@ class GetCryptoStats {
 
     rp(requestOptions)
       .then((response) => {
+        const date = new Date();
         (async function storeBTCinDB() {
           const url = mongoConfig.db.host;
           const dbname = mongoConfig.db.name;
@@ -42,13 +44,12 @@ class GetCryptoStats {
 
             await db.collection(`${currencySymbol}Daily`).insertOne(response.data);
 
-            const date = new Date();
             debug(`[${date}] : ${currencySymbol} daily data inserted`);
-            this.writeLogs(`[${date}] : ${currencySymbol} daily data inserted`);
           } catch (err) {
             debug(err);
           }
         }());
+        this.writeLogs(`[${date}] : ${currencySymbol} daily data inserted`);
       })
       .catch((err) => {
         debug(err);
@@ -57,7 +58,9 @@ class GetCryptoStats {
 
   writeLogs(message) {
     const date = new Date();
-    fs.appendFile('../../logs/main_server_log.txt', `[${date}]: ${message}`);
+    fs.appendFile('./logs/main_server_log.txt', `\n[${date}]: ${message}`, (err) => {
+      if (err) debug(chalk.red(err));
+    });
   }
 }
 
