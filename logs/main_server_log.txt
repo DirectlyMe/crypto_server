@@ -1,7 +1,41 @@
 
-Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time): server started
-[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
-[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
-[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
-[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
-[Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)]: [Sun Sep 16 2018 22:38:05 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted
+Thu Sep 20 2018 17:27:48 GMT-0600 (Mountain Daylight Time): server started
+Thu Sep 20 2018 17:27:48 GMT-0600 (Mountain Daylight Time): server started
+[Thu Sep 20 2018 17:28:18 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
+Thu Sep 20 2018 17:28:18 GMT-0600 (Mountain Daylight Time): GetStats ran
+[Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
+[Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
+[Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted
+[Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:28:19 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
+Thu Sep 20 2018 17:28:43 GMT-0600 (Mountain Daylight Time): server started
+Thu Sep 20 2018 17:28:43 GMT-0600 (Mountain Daylight Time): server started
+[Thu Sep 20 2018 17:29:43 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
+Thu Sep 20 2018 17:29:43 GMT-0600 (Mountain Daylight Time): GetStats ran
+[Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
+[Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
+[Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted
+[Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:29:44 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
+[Thu Sep 20 2018 17:30:43 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
+Thu Sep 20 2018 17:30:43 GMT-0600 (Mountain Daylight Time): GetStats ran
+[Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
+[Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted
+[Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
+[Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:30:44 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
+[Thu Sep 20 2018 17:31:43 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
+Thu Sep 20 2018 17:31:43 GMT-0600 (Mountain Daylight Time): GetStats ran
+[Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted
+[Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
+[Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
+[Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:31:44 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
+[Thu Sep 20 2018 17:32:43 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
+Thu Sep 20 2018 17:32:43 GMT-0600 (Mountain Daylight Time): GetStats ran
+[Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
+[Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted
+[Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
+[Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:32:44 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
+[Thu Sep 20 2018 17:33:43 GMT-0600 (Mountain Daylight Time)]: Getting crypto stats
+Thu Sep 20 2018 17:33:43 GMT-0600 (Mountain Daylight Time): GetStats ran
+[Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)] : XRP daily data inserted
+[Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)] : BTC daily data inserted
+[Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)] : ETH daily data inserted
+[Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)]: [Thu Sep 20 2018 17:33:44 GMT-0600 (Mountain Daylight Time)] : LTC daily data inserted
