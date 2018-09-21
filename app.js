@@ -30,11 +30,11 @@ app.use('/currency', currencyRoutes);
 app.get('/', (req, res) => res.send('Crypto API'));
 app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
 
-const getStats = require('./src/api_calls/call_apis');
+const dailyPull = require('./src/api_calls/call_daily_pull');
 
-// getStats();
+// dailyPull();
 
 setInterval(() => {
-  getStats();
+  dailyPull();
   writeLog('GetStats ran');
 }, 86400000);
