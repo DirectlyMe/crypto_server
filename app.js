@@ -23,12 +23,16 @@ const port = process.env.PORT || 8080;
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public')));
 
+const currencyRoutes = require('./src/routes/get_currency')();
+
+app.use('/currency', currencyRoutes);
+
 app.get('/', (req, res) => res.send('Crypto API'));
 app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
 
 const getStats = require('./src/api_calls/call_apis');
 
-getStats();
+// getStats();
 
 setInterval(() => {
   getStats();
