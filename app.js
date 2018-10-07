@@ -10,6 +10,12 @@ const dailyPull = require("./src/api_calls/call_daily_pull");
 const currencyRoutes = require("./src/routes/get_currency")();
 
 class ExpressServer {
+  constructor() {
+    this.GDAXcurrencies = ["BTC", "ETH", "LTC"];
+
+    this.dailyPull();
+  }
+
   start() {
     this.writeLog("server started");
 
@@ -23,18 +29,26 @@ class ExpressServer {
 
     app.get("/", (req, res) => res.send("Crypto API"));
     app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
-
-    this.getBTCHistory();
   }
 
-  async getBTCHistory() {
-    await exec(
-      "curl https://www.cryptodatadownload.com/cdd/Gdax_BTCUSD_d.csv > models/currency_data/btc_history.csv",
-    );
+  async getBTCHistory(currencySym) {
+    try {
+      await exec(
+        `curl --insecure https://www.cryptodatadownload.com/cdd/Gdax_${currencySym}USD_d.csv > models/currency_data/${currencySym}_history.csv`
+      );
+
+      debug(`grabbed ${currencySym} csv`);
+    } catch (err) {
+      debug(err);
+    }
   }
 
   // currently not in use
   dailyPull() {
+    for (const currency of this.GDAXcurrencies) {
+      this.getBTCHistory(currency);
+    }
+
     setInterval(() => {
       dailyPull();
       this.writeLog("GetStats ran");
@@ -45,9 +59,9 @@ class ExpressServer {
     fs.appendFile(
       "./logs/main_server_log.txt",
       `\n${new Date()}: ${message}`,
-      (err) => {
+      err => {
         if (err) debug(chalk.red(err));
-      },
+      }
     );
   }
 }

@@ -1,10 +1,11 @@
 {
   "name": "crypto_server",
   "version": "1.0.0",
-  "description": "pull crypto data and processes it",
+  "description": "pulls crypto data and processes it",
   "main": "app.js",
   "scripts": {
-    "start": "DEBUG=app,app:* nodemon app.js"
+    "start": "DEBUG=app,app:* nodemon app.js",
+    "windows_start": "@powershell -Command $env:DEBUG='app,app:*'; nodemon app.js"
   },
   "author": "Jack Hansen",
   "license": "MIT",
