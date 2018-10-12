@@ -1,5 +1,4 @@
 /node_modules
-/src/config
 /logs
 npm-debug.log*
 yarn-debug.log*
