@@ -1,12 +1,10 @@
 const express = require("express");
-const PredictionsCont = require("../controllers/get_predictions_controller");
+const getPrediction = require("../controllers/get_predictions_controller");
 
 const pullPredictions = express.Router();
-const PredictionController = new PredictionsCont();
-
 
 function router() {
-  pullPredictions.route("/get-prediction/:id").get(PredictionController.getPrediction);
+  pullPredictions.route("/get-prediction/:id").get(getPrediction);
 
   return pullPredictions;
 }

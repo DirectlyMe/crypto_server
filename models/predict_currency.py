@@ -7,12 +7,10 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
 
-
 def main():
     currency = sys.argv[1]
 
-    df = pd.read_csv(
-        f'./currency_data/machine_learning/{currency}_history_parsed.csv')
+    df = pd.read_csv(f'models/currency_data/{currency}_history_parsed.csv')
 
     df['Date'] = pd.to_datetime(df['Date']).dt.date
     group = df.groupby('Date')
@@ -44,7 +42,7 @@ def main():
     regressor.compile(optimizer='adam', loss='mean_squared_error')
 
     # Fitting the RNN to the Training set
-    regressor.fit(X_train, y_train, batch_size=5, epochs=100)
+    regressor.fit(X_train, y_train, batch_size=5, epochs=150)
 
     test_set = df_test.values
     inputs = np.reshape(test_set, (len(test_set), 1))
@@ -54,6 +52,8 @@ def main():
     predicted_BTC_price = sc.inverse_transform(predicted_BTC_price)
 
     print(predicted_BTC_price[-1])
+
+    sys.exit()
 
 if __name__ == "__main__":
     main()

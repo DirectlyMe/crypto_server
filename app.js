@@ -1,4 +1,6 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const debug = require("debug")("app");
 const chalk = require("chalk");
 const morgan = require("morgan");
@@ -8,6 +10,7 @@ const exec = util.promisify(require("child_process").exec);
 const dailyPull = require("./src/api_calls/call_daily_pull");
 const currencyRoutes = require("./src/routes/get_currency")();
 const predictionRoutes = require("./src/routes/get_predictions")();
+const authRoutes = require("./src/routes/auth_routes")();
 const removeFirstLine = require("./src/utilities/parse_file");
 
 class ExpressServer {
@@ -23,9 +26,15 @@ class ExpressServer {
     const port = process.env.PORT || 8080;
 
     app.use(morgan("tiny"));
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(cookieParser());
 
     app.use("/currency", currencyRoutes);
     app.use("/predict", predictionRoutes);
+    app.use("/auth", authRoutes);
+
+    require("./src/config/passport")(app); // eslint-disable-line
 
     app.get("/", (req, res) => res.send("Crypto API, current routes are /predictions and /currency"));
     app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
