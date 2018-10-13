@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 const debug = require("debug")("app:get_predictions_cont");
 
-const mongoConfig = require("../config/mongo_config")
+const mongoConfig = require("../config/mongo_config");
 
 async function retrievePrediction(currency) {
   const url = mongoConfig.db.host;
@@ -11,14 +11,15 @@ async function retrievePrediction(currency) {
     const client = await MongoClient.connect(url);
     const db = client.db(dbname);
 
-    const coll = await db.collection("predictedPrices")
-    const prediction = coll.findOne({ "Date": new Date() })
+    const coll = await db.collection("predictedPrices");
+    const prediction = coll.findOne({ Date: new Date() });
 
-    return prediction[currency]; 
-  } catch(err) {
+    return prediction[currency];
+  } catch (err) {
     debug("Could not get currencies");
   }
 
+  return "couldn't find a prediction";
 }
 
 async function getPrediction(req, res) {
@@ -44,7 +45,7 @@ async function getPrediction(req, res) {
 
   if (isValid) {
     const prediction = await retrievePrediction(currency);
-    res.send(prediction)
+    res.send(prediction);
   } else {
     debug("Invalid currency detected");
     res.send("Invalid currency");

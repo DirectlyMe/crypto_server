@@ -1,5 +1,5 @@
 const passport = require("passport");
-require("./strategies/google.strategy")();
+require("./strategies/google.strategy")();   // eslint-disable-line
 
 function passportConfig(app) {
   app.use(passport.initialize());

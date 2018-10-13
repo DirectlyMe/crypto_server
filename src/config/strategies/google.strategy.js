@@ -2,7 +2,7 @@ const passport = require("passport");
 const { Strategy } = require("passport-custom");
 const { OAuth2Client } = require("google-auth-library");
 const { MongoClient } = require("mongodb");
-const debug = require("debug")("app.google.strategy");
+const debug = require("debug")("app:google.strategy");
 
 const mongoConfig = require("../mongo_config");
 const { clientID } = require("../api_keys");
