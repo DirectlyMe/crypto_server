@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const debug = require("debug")("app");
 const chalk = require("chalk");
 const morgan = require("morgan");
-const fs = require("fs");
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const dailyPull = require("./src/api_calls/call_daily_pull");
@@ -12,6 +11,7 @@ const currencyRoutes = require("./src/routes/get_currency")();
 const predictionRoutes = require("./src/routes/get_predictions")();
 const authRoutes = require("./src/routes/auth_routes")();
 const removeFirstLine = require("./src/utilities/parse_file");
+const writeLog = require("./src/utilities/write_log");
 
 class ExpressServer {
   constructor() {
@@ -20,7 +20,7 @@ class ExpressServer {
   }
 
   start() {
-    this.writeLog("server started");
+    writeLog("server started", debug);
 
     const app = express();
     const port = process.env.PORT || 8080;
@@ -45,7 +45,7 @@ class ExpressServer {
 
     setInterval(() => {
       dailyPull();
-      this.writeLog("GetStats ran");
+      writeLog("GetStats ran", debug);
     }, 86400000);
   }
 
@@ -72,16 +72,6 @@ class ExpressServer {
     } catch (err) {
       debug(err);
     }
-  }
-
-  writeLog(message) {
-    fs.appendFile(
-      "./logs/main_server_log.txt",
-      `\n${new Date()}: ${message}`,
-      err => {
-        if (err) debug(chalk.red(err));
-      }
-    );
   }
 }
 

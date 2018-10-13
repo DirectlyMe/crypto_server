@@ -41,19 +41,23 @@ function googleStrategy() {
   passport.use(
     "google-strategy",
     new Strategy(async (req, done) => {
-      const { tokenID, username } = req.params;
+      try {
+        const { tokenID, username } = req.params;
 
-      const ticket = await authClient.verifyIdToken({
-        idToken: tokenID,
-        audience: clientID
-      });
+        const ticket = await authClient.verifyIdToken({
+          idToken: tokenID,
+          audience: clientID
+        });
 
-      const payload = ticket.getPayload();
-      debug(payload);
+        const payload = ticket.getPayload();
 
-      if (payload !== null) {
-        getUser(username, done);
-      } else {
+        if (payload.email_verified === true) {
+          getUser(username, done);
+        } else {
+          done(null, false);
+        }
+      } catch (err) {
+        debug(err);
         done(null, false);
       }
     })

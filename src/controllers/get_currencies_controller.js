@@ -1,20 +1,8 @@
 const rp = require("request-promise");
-const fs = require("fs");
-const chalk = require("chalk");
 const debug = require("debug")("app:get_currency_controller");
+const writeLogs = require("../utilities/write_log");
 
-const { apiKey } = require("../config/api_keys");
-
-function writeLogs(message) {
-  const date = new Date();
-  fs.appendFile(
-    "./logs/main_server_log.txt",
-    `\n[${date}]: ${message}`,
-    err => {
-      if (err) debug(chalk.red(err));
-    }
-  );
-}
+const { coinCapKey } = require("../config/api_keys");
 
 function getCurrency(req, res) {
   const currency = req.params.id;
@@ -46,7 +34,7 @@ function getCurrency(req, res) {
         convert: "USD"
       },
       headers: {
-        "X-CMC_PRO_API_KEY": apiKey
+        "X-CMC_PRO_API_KEY": coinCapKey
       },
       json: true,
       gzip: true
@@ -56,10 +44,10 @@ function getCurrency(req, res) {
       .then(response => {
         res.json(response.data);
         debug(`Pulled ${currency}`);
-        writeLogs(`Pulled ${currency}`);
+        writeLogs(`Pulled ${currency}`, debug);
       })
       .catch(err => {
-        writeLogs(err);
+        writeLogs(err, debug);
         debug(err);
       });
   } else {
@@ -67,4 +55,4 @@ function getCurrency(req, res) {
   }
 }
 
-module.exports = getCurrency;
+module.exports = { getCurrency };
