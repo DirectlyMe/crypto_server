@@ -1,27 +1,24 @@
-const { spawn } = require("child_process");
+const { MongoClient } = require("mongodb");
 const debug = require("debug")("app:get_predictions_cont");
 
-function callModel(currency) {
-  return new Promise((success, nosuccess) => {
-    const output = '';
-    const predictionModel = spawn("python3.6", [
-      "models/predict_currency.py",
-      currency
-    ]);
+const mongoConfig = require("../config/mongo_config")
 
-    predictionModel.stdout.on("data", data => {
-      output.concat(data);
-    });
+async function retrievePrediction(currency) {
+  const url = mongoConfig.db.host;
+  const dbname = mongoConfig.db.name;
 
-    predictionModel.stderr.on("data", data => {
-      nosuccess(data);
-    });
+  try {
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbname);
 
-    predictionModel.on("close", code => {
-      debug(code);
-      success(output);
-    });
-  });
+    const coll = await db.collection("predictedPrices")
+    const prediction = coll.findOne({ "Date": new Date() })
+
+    return prediction[currency]; 
+  } catch(err) {
+    debug("Could not get currencies");
+  }
+
 }
 
 async function getPrediction(req, res) {
@@ -46,9 +43,8 @@ async function getPrediction(req, res) {
   }
 
   if (isValid) {
-    const pricePromise = callModel(currency);
-
-    pricePromise.then(data => res.send(data)).catch(err => res.send(err));
+    const prediction = await retrievePrediction(currency);
+    res.send(prediction)
   } else {
     debug("Invalid currency detected");
     res.send("Invalid currency");
