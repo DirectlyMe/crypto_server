@@ -42,7 +42,7 @@ function googleStrategy() {
     "google-strategy",
     new Strategy(async (req, done) => {
       try {
-        const { tokenID, username } = req.params;
+        const { tokenID, username } = req.body;
 
         const ticket = await authClient.verifyIdToken({
           idToken: tokenID,
