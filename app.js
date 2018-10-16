@@ -26,7 +26,9 @@ class ExpressServer {
     const port = process.env.PORT || 8080;
 
     app.use(morgan("tiny"));
-    app.use(session({ secret: "yoyoIsCute " }));
+    app.use(
+      session({ secret: "yoyoIsCute ", resave: false, saveUninitialized: true })
+    );
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     require("./src/config/passport")(app); // eslint-disable-line
@@ -34,7 +36,6 @@ class ExpressServer {
     app.use("/currency", currencyRoutes);
     app.use("/predict", predictionRoutes);
     app.use("/auth", authRoutes);
-
 
     app.get("/", (req, res) => res.send("Crypto API, current routes are /predictions and /currency"));
     app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
