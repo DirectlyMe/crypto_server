@@ -26,7 +26,7 @@ async function getUser(username, done) {
     if (user !== null) {
       done(null, user);
     } else {
-      col.insertOne({ username });
+      await col.insertOne({ username });
       user = await col.findOne({ username });
       done(null, user);
     }

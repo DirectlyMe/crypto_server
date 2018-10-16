@@ -1,5 +1,5 @@
 const express = require("express");
-const cookieParser = require("cookie-parser");
+const session = require("express-session");
 const bodyParser = require("body-parser");
 const debug = require("debug")("app");
 const chalk = require("chalk");
@@ -26,9 +26,9 @@ class ExpressServer {
     const port = process.env.PORT || 8080;
 
     app.use(morgan("tiny"));
+    app.use(session({ secret: "yoyoIsCute " }));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(cookieParser());
     require("./src/config/passport")(app); // eslint-disable-line
 
     app.use("/currency", currencyRoutes);

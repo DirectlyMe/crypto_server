@@ -5,13 +5,14 @@ const debug = require("debug")("app:auth_routes");
 const adminRoutes = express.Router();
 
 function router() {
-  adminRoutes.post(
+  adminRoutes.get(
     "/signIn",
     passport.authenticate("google-strategy", {
       failWithError: "Authentication Rejected"
     }),
     (req, res) => {
       debug("User authenticated");
+      debug(req.user);
       res.send("authenticated");
     }
   );
