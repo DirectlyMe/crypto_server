@@ -1,6 +1,6 @@
 const express = require("express");
 const getPrediction = require("../controllers/get_predictions_controller");
-const signedIn = require("../middleware/signed_in");
+const signedIn = require("../utilities/signed_in");
 
 const pullPredictions = express.Router();
 

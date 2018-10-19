@@ -1,12 +1,12 @@
 const express = require("express");
 const session = require("express-session");
+const uuid = require("uuid");
 const bodyParser = require("body-parser");
 const debug = require("debug")("app");
 const chalk = require("chalk");
 const morgan = require("morgan");
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
-const dailyPull = require("./src/api_calls/call_daily_pull");
 const currencyRoutes = require("./src/routes/get_currency")();
 const predictionRoutes = require("./src/routes/get_predictions")();
 const authRoutes = require("./src/routes/auth_routes")();
@@ -27,7 +27,12 @@ class ExpressServer {
 
     app.use(morgan("tiny"));
     app.use(
-      session({ secret: "yoyoIsCute ", resave: false, saveUninitialized: true })
+      session({
+        genid: req => uuid(), // eslint-disable-line
+        secret: "yoyoIsCute ",
+        resave: false,
+        saveUninitialized: true
+      })
     );
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,7 +42,11 @@ class ExpressServer {
     app.use("/predict", predictionRoutes);
     app.use("/auth", authRoutes);
 
-    app.get("/", (req, res) => res.send("Crypto API, current routes are /predictions and /currency"));
+    app.get("/", (req, res) =>
+      res.send(
+        "Crypto API, current routes are /predict, /currency, /auth and /admin. \n Check the routes folder for more info."
+      )
+    );
     app.listen(port, () => debug(`Listening on port ${chalk.green(port)}`));
   }
 
@@ -45,7 +54,7 @@ class ExpressServer {
     this.getCryptoStats();
 
     setInterval(() => {
-      dailyPull();
+      this.getCryptoStats();
       writeLog("GetStats ran", debug);
     }, 86400000);
   }

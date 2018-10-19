@@ -1,15 +1,15 @@
+import asyncio
 import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
 
 class CurrencyModel:
-    def runModel(self, currency):
+    async def runModel(self, currency):
         df = pd.read_csv(
-            f'./currency_data/machine_learning/{currency}_history_parsed.csv')
+            f'models/currency_data/{currency}_history_parsed.csv')
 
         df['Date'] = pd.to_datetime(df['Date']).dt.date
         group = df.groupby('Date')
@@ -50,5 +50,6 @@ class CurrencyModel:
         predicted_BTC_price = regressor.predict(inputs)
         predicted_BTC_price = sc.inverse_transform(predicted_BTC_price)
 
-        print(predicted_BTC_price[-1])
-        return predicted_BTC_price[-1]
+        print(predicted_BTC_price)
+        tommorrowsPrice = predicted_BTC_price[-1]
+        return float(tommorrowsPrice[0])
