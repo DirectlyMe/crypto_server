@@ -5,20 +5,22 @@ from pymongo import MongoClient
 from predict_currency import CurrencyModel
 
 async def main():
-  currencies = ['BTC', 'ETH', 'LTC']
+  currencies = ['BTC', 'ETH', 'LTC', 'XRP']
   model = CurrencyModel()
   
   BitcoinPrice = await model.runModel(currencies[0])
   EtheriumPrice = await model.runModel(currencies[1])
   LitecoinPrice = await model.runModel(currencies[2])
+  RipplePrice = await model.runModel(currencies[3])
 
-  date = str(datetime.datetime.utcnow())
+  date = str(datetime.datetime.now())
 
   tomorrowPrices = {
     "Date": date[0:10],
     "BTC": BitcoinPrice,
     "ETH": EtheriumPrice,
-    "LTC": LitecoinPrice
+    "LTC": LitecoinPrice,
+    "XRP": RipplePrice
   }
 
   client = MongoClient()

@@ -21,14 +21,17 @@ async function getUser(username, done) {
 
     const database = await client.db(db);
     const col = await database.collection("users");
-    let user = await col.findOne({ username });
+    const user = await col.findOne({ username });
+
+    debug(user);
 
     if (user !== null) {
       done(null, user);
     } else {
-      await col.insertOne({ username });
-      user = await col.findOne({ username });
-      done(null, user);
+      await col.insertOne({ username, reminders: {} });
+      const retreivedUser = await col.findOne({ username });
+
+      done(null, retreivedUser);
     }
   } catch (err) {
     debug(err.stack);

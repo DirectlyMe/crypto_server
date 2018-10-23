@@ -10,12 +10,13 @@ const exec = util.promisify(require("child_process").exec);
 const currencyRoutes = require("./src/routes/get_currency")();
 const predictionRoutes = require("./src/routes/get_predictions")();
 const authRoutes = require("./src/routes/auth_routes")();
+const userRoutes = require("./src/routes/user_routes")();
 const removeFirstLine = require("./src/utilities/parse_file");
 const writeLog = require("./src/utilities/write_log");
 
 class ExpressServer {
   constructor() {
-    this.GDAXcurrencies = ["BTC", "ETH", "LTC"];
+    this.GDAXcurrencies = ["BTC", "ETH", "LTC", "XRP"];
     this.dailyPull();
   }
 
@@ -41,6 +42,7 @@ class ExpressServer {
     app.use("/currency", currencyRoutes);
     app.use("/predict", predictionRoutes);
     app.use("/auth", authRoutes);
+    app.use("/user", userRoutes);
 
     app.get("/", (req, res) =>
       res.send(
@@ -72,7 +74,7 @@ class ExpressServer {
     try {
       // pull all history files that we're working with
       await exec(
-        `curl --insecure https://www.cryptodatadownload.com/cdd/Gdax_${currencySym}USD_d.csv > ${pathOg}`
+        `curl --insecure https://www.cryptodatadownload.com/cdd/Kraken_${currencySym}USD_d.csv > ${pathOg}`
       );
 
       // the first line of the csv is junk and messes up the processing
