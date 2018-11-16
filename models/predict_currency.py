@@ -15,7 +15,7 @@ class CurrencyModel:
         group = df.groupby('Date')
         real_price = group['Open'].mean()
 
-        prediction_days = 60
+        prediction_days = 90
         df_train = real_price[:len(real_price) - prediction_days]
         df_test = real_price[len(real_price) - prediction_days - 1:]
 
